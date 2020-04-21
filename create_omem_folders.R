@@ -51,6 +51,24 @@ listFiles = list.files(path = EMpath)
 file.copy(file.path(EMpath, listFiles), 'scenario_temporal/cod-em')
 
 # -------------------------------------------------------
+# 3-1) Temporal scenario: (EM with ts in em)
+
+dir.create(path = 'scenario_2_temporal')
+dir.create(path = 'scenario_2_temporal/cod-om')
+dir.create(path = 'scenario_2_temporal/cod-em')
+
+#Files OM:
+OMpath = 'auxFiles/OM_1area'
+listFiles = list.files(path = OMpath)
+file.copy(file.path(OMpath, listFiles), 'scenario_2_temporal/cod-om')
+#Files EM:
+EMpath = 'auxFiles/EM_1area_ts'
+listFiles = list.files(path = EMpath)
+file.copy(file.path(EMpath, listFiles), 'scenario_2_temporal/cod-em')
+
+
+
+# -------------------------------------------------------
 # 4) Spatiotemporal scenario:
 
 dir.create(path = 'scenario_spatiotemporal')
@@ -98,3 +116,36 @@ file.copy(file.path(OMpath, listFiles), 'scenario_2_spatiotemporal/cod-om')
 EMpath = 'auxFiles/EM_2areas'
 listFiles = list.files(path = EMpath)
 file.copy(file.path(EMpath, listFiles), 'scenario_2_spatiotemporal/cod-em')
+
+# -------------------------------------------------------
+# 6-1) Spatiotemporal scenario: (EM assumes ts in em)
+
+dir.create(path = 'scenario_3_spatiotemporal')
+dir.create(path = 'scenario_3_spatiotemporal/cod-om')
+dir.create(path = 'scenario_3_spatiotemporal/cod-em')
+
+#Files OM:
+OMpath = 'auxFiles/OM_2areas'
+listFiles = list.files(path = OMpath)
+file.copy(file.path(OMpath, listFiles), 'scenario_3_spatiotemporal/cod-om')
+#Files EM:
+EMpath = 'auxFiles/EM_2areas_ts'
+listFiles = list.files(path = EMpath)
+file.copy(file.path(EMpath, listFiles), 'scenario_3_spatiotemporal/cod-em')
+
+
+# -------------------------------------------------------
+# 6-1) Spatiotemporal scenario: (EM assumes ts in em but only one area)
+
+dir.create(path = 'scenario_4_spatiotemporal')
+dir.create(path = 'scenario_4_spatiotemporal/cod-om')
+dir.create(path = 'scenario_4_spatiotemporal/cod-em')
+
+#Files OM:
+OMpath = 'auxFiles/OM_2areas'
+listFiles = list.files(path = OMpath)
+file.copy(file.path(OMpath, listFiles), 'scenario_4_spatiotemporal/cod-om')
+#Files EM:
+EMpath = 'auxFiles/EM_1area_ts'
+listFiles = list.files(path = EMpath)
+file.copy(file.path(EMpath, listFiles), 'scenario_4_spatiotemporal/cod-em')

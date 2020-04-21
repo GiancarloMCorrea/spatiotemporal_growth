@@ -45,7 +45,7 @@ agecomp0 = list(fleets = c(2), Nsamp = list(saNsamEM), years = list(iniSurYear:n
 # Standard (apply to EM):
 E0 = list(natM_type = NULL, natM_n_breakpoints = NULL, natM_lorenzen = NULL, 
           natM_val= NULL, par_name = c("NatM_p_1_Fem_GP_1"),
-          par_int = c(0.34), par_phase = c(3), forecast_num = 0) # This is not altering anything
+          par_int = c(0.34), par_phase = c(6), forecast_num = 0) # This is not altering anything
 R1 = list(retro_yr = 0) # This indicates spatial, temporal, or st variability in G
 
 
@@ -114,7 +114,8 @@ F1 = list(years = c(1:nyears), years_alter = c(1:nyears), fisheries = c(rep(1, t
           fvals = c(rep(0, times = iniFyear), upFway[-1], downFway[-1]))
 F1 = lapply(X = F1, FUN = rep, times = 2)
 F1$fisheries = rep(c(1,2), each = length(1:nyears))
-F1$fvals = c(rep(0, times = iniFyear), upFway[-1], downFway[-1], rep(0, times = nyears))
+Fvector = c(rep(0, times = iniFyear), upFway[-1], downFway[-1])
+F1$fvals = c(Fvector, Fvector*0.1)
 
 # This will affect EM:
 index0 = list(fleets = c(2), years = list(iniSurYear:nyears), sds_obs = list(0.2))
@@ -126,7 +127,7 @@ agecomp0 = list(fleets = c(2), Nsamp = list(saNsamEM), years = list(iniSurYear:n
 # Standard (apply to EM):
 E0 = list(natM_type = NULL, natM_n_breakpoints = NULL, natM_lorenzen = NULL, 
           natM_val= NULL, par_name = c("NatM_p_1_Fem_GP_1"),
-          par_int = c(0.34), par_phase = c(3), forecast_num = 0) # This is not altering anything
+          par_int = c(0.34), par_phase = c(6), forecast_num = 0) # This is not altering anything
 R1 = list(retro_yr = 0) # This indicates spatial, temporal, or st variability in G
 
 
@@ -193,7 +194,8 @@ F2 = list(years = c(1:nyears), years_alter = c(1:nyears), fisheries = c(rep(1, t
           fvals = c(rep(0, times = iniFyear), upFway[-1], downFway[-1]))
 F2 = lapply(X = F2, FUN = rep, times = 2)
 F2$fisheries = rep(c(1,2), each = length(1:nyears))
-F2$fvals = c(rep(0, times = nyears), rep(0, times = iniFyear), upFway[-1], downFway[-1])
+Fvector = c(rep(0, times = iniFyear), upFway[-1], downFway[-1])
+F2$fvals = c(Fvector*0.1, Fvector)
 
 # This will affect EM:
 index0 = list(fleets = c(2), years = list(iniSurYear:nyears), sds_obs = list(0.2))
@@ -205,7 +207,7 @@ agecomp0 = list(fleets = c(2), Nsamp = list(saNsamEM), years = list(iniSurYear:n
 # Standard (apply to EM):
 E0 = list(natM_type = NULL, natM_n_breakpoints = NULL, natM_lorenzen = NULL, 
           natM_val= NULL, par_name = c("NatM_p_1_Fem_GP_1"),
-          par_int = c(0.34), par_phase = c(3), forecast_num = 0) # This is not altering anything
+          par_int = c(0.34), par_phase = c(6), forecast_num = 0) # This is not altering anything
 R1 = list(retro_yr = 0) # This indicates spatial, temporal, or st variability in G
 
 
@@ -280,7 +282,7 @@ agecomp0 = list(fleets = c(3,4), Nsamp = list(saNsamEM,saNsamEM),
 # Standard (apply to EM):
 E0 = list(natM_type = NULL, natM_n_breakpoints = NULL, natM_lorenzen = NULL, 
           natM_val= NULL, par_name = c("NatM_p_1_Fem_GP_1", "NatM_p_1_Fem_GP_2"),
-          par_int = c(0.34, 0.34), par_phase = c(3,3), forecast_num = 0) 
+          par_int = c(0.34, 0.34), par_phase = c(6,6), forecast_num = 0) 
 R1 = list(retro_yr = 0)
 
 
@@ -337,9 +339,10 @@ if(!biasAdjust){
 
 
 # First set of changes: This will apply for OM:
+Fvector = c(rep(0, times = iniFyear), upFway[-1], downFway[-1])
 F1 = list(years = c(1:nyears,1:nyears), years_alter = c(1:nyears,1:nyears), 
       fisheries = rep(c(1,2), each = nyears),
-          fvals = c(rep(0, times = iniFyear), upFway[-1], downFway[-1], rep(0, times = nyears)))
+          fvals = c(Fvector, Fvector*0.1))
 
 # This will affect EM:
 index0 = list(fleets = c(3,4), years = list(iniSurYear:nyears, iniSurYear:nyears), 
@@ -354,7 +357,7 @@ agecomp0 = list(fleets = c(3,4), Nsamp = list(saNsamEM,saNsamEM),
 # Standard (apply to EM):
 E0 = list(natM_type = NULL, natM_n_breakpoints = NULL, natM_lorenzen = NULL, 
           natM_val= NULL, par_name = c("NatM_p_1_Fem_GP_1", "NatM_p_1_Fem_GP_2"),
-          par_int = c(0.34, 0.34), par_phase = c(3,3), forecast_num = 0) 
+          par_int = c(0.34, 0.34), par_phase = c(6,6), forecast_num = 0) 
 R1 = list(retro_yr = 0)
 
 
@@ -410,9 +413,10 @@ if(!biasAdjust){
 
 
 # First set of changes: This will apply for OM:
+Fvector = c(rep(0, times = iniFyear), upFway[-1], downFway[-1])
 F2 = list(years = c(1:nyears,1:nyears), years_alter = c(1:nyears,1:nyears), 
       fisheries = rep(c(1,2), each = nyears),
-          fvals = c(rep(0, times = nyears), rep(0, times = iniFyear), upFway[-1], downFway[-1]))
+          fvals = c(Fvector*0.1, Fvector))
 
 # This will affect EM:
 index0 = list(fleets = c(3,4), years = list(iniSurYear:nyears, iniSurYear:nyears), 
@@ -427,7 +431,7 @@ agecomp0 = list(fleets = c(3,4), Nsamp = list(saNsamEM,saNsamEM),
 # Standard (apply to EM):
 E0 = list(natM_type = NULL, natM_n_breakpoints = NULL, natM_lorenzen = NULL, 
           natM_val= NULL, par_name = c("NatM_p_1_Fem_GP_1", "NatM_p_1_Fem_GP_2"),
-          par_int = c(0.34, 0.34), par_phase = c(3,3), forecast_num = 0) 
+          par_int = c(0.34, 0.34), par_phase = c(6,6), forecast_num = 0) 
 R1 = list(retro_yr = 0)
 
 

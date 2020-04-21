@@ -36,7 +36,7 @@ agecomp0 = list(fleets = c(2), Nsamp = list(saNsamEM), years = list(iniSurYear:n
 # Standard (apply to EM):
 E0 = list(natM_type = NULL, natM_n_breakpoints = NULL, natM_lorenzen = NULL, 
           natM_val= NULL, par_name = c("NatM_p_1_Fem_GP_1"),
-          par_int = c(0.34), par_phase = c(3), forecast_num = 0) # This is not altering anything
+          par_int = c(0.34), par_phase = c(6), forecast_num = 0) # This is not altering anything
 R0 = list(retro_yr = 0)
 
 # Detect number of cores:

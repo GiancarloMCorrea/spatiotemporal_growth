@@ -3,20 +3,20 @@
 rm(list = ls())
 
 NatM = 0.34
-FishM = seq(from = 0, to = 7, by = 0.01)
+FishM = seq(from = 0, to = 10, by = 0.01)
 nAges = 20
 allAges = seq(from = 0, to = nAges, by = 1)
 wtA = 5.58883e-006
 wtB = 3.18851
-Linf = 103
+Linf = 100
 Kpar = 0.195
 t0 = -0.356
-m50 = 2.2
-m95 = 2.8
-s50 = 2.2
-s95 = 2.8
+m50 = 4.88
+m95 = 5.1
+s50 = 4.35
+s95 = 4.55
 
-steep = 1
+steep = 0.8
 R0 = 442413
 tau = 1
 
