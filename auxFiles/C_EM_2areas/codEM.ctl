@@ -5,32 +5,33 @@
 #_user_info_available_at:https://vlab.ncep.noaa.gov/group/stock-synthesis
 #_data_and_control_files: codOM.dat // codOM.ctl
 0  # 0 means do not read wtatage.ss; 1 means read and use wtatage.ss and also read and use growth parameters
-1  #_N_Growth_Patterns
+2  #_N_Growth_Patterns
 1 #_N_platoons_Within_GrowthPattern
 #_Cond 1 #_Morph_between/within_stdev_ratio (no read if N_morphs=1)
 #_Cond  1 #vector_Morphdist_(-1_in_first_val_gives_normal_approx)
 #
 3 # recr_dist_method for parameters:  2=main effects for GP, Settle timing, Area; 3=each Settle entity; 4=none, only when N_GP*Nsettle*pop==1
 1 # not yet implemented; Future usage: Spawner-Recruitment: 1=global; 2=by area
-1 #  number of recruitment settlement assignments
+2 #  number of recruitment settlement assignments
 0 # unused option
 #GPattern month  area  age (for each settlement assignment)
  1 1 1 0
+ 2 1 2 0
 #
-# N_movement_definitions goes here if Nareas > 1
+0 # N_movement_definitions goes here if Nareas > 1
 #_Cond 1.0 # first age that moves (real age at begin of season, not integer) also cond on do_migration>0
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
 1 #_Nblock_Patterns
 1 #_blocks_per_pattern
 # begin and end years of blocks
- 0 0
+0 0 
 #
 # controls for all timevary parameters
 1 #_env/block/dev_adjust_method for all time-vary parms (1=warn relative to base parm bounds; 3=no bound check)
 #
 # AUTOGEN
-0 0 0 0 0 # autogen: 1st element for biology, 2nd for SR, 3rd for Q, 4th reserved, 5th for selex
+1 0 0 0 0 # autogen: 1st element for biology, 2nd for SR, 3rd for Q, 4th reserved, 5th for selex
 # where: 0 = autogen all time-varying parms; 1 = read each time-varying parm line; 2 = read then autogen if parm min==-12345
 #
 #_Available timevary codes
@@ -63,7 +64,7 @@
 #
 #_growth_parms
 #_ LO HI INIT PRIOR PR_SD PR_type PHASE env_var&link dev_link dev_minyr dev_maxyr dev_PH Block Block_Fxn
- 0 1 0.34 0 0 0 -9 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 0 1 0.34 0 0 0 6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
  0 40 10.9 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  60 150 100 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0 1 0.195 0 0 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
@@ -77,18 +78,34 @@
  -9.99 9.99 1 0 0 0 -1 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem_GP_1
  -9.99 9.99 0 0 0 0 -1 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem_GP_1
 
+ 0 1 0.34 0 0 0 6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_2
+ 0 40 10.9 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_2
+ 60 150 100 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_2
+ 0 1 0.195 0 0 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_2
+# 0 10 1.03921 0 0 0 -3 0 0 0 0 0 0 0 # Richards_Fem_GP_2
+ 0 10 3.45645 0 0 0 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_2
+ 0 20 9.53233 0 0 0 3 0 0 0 0 0 0 0 # CV_old_Fem_GP_2
+ -9.99 9.99 5.58883e-006 0 0 0 -1 0 0 0 0 0 0 0 # Wtlen_1_Fem_GP_2
+ -9.99 9.99 3.18851 0 0 0 -1 0 0 0 0 0 0 0 # Wtlen_2_Fem_GP_2
+ -9.99 9.99 4.8832 0 0 0 -1 0 0 0 0 0 0 0 # Mat50%_Fem_GP_2
+ -9.99 9.99 -0.9654 0 0 0 -1 0 0 0 0 0 0 0 # Mat_slope_Fem_GP_2
+ -9.99 9.99 1 0 0 0 -1 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem_GP_2
+ -9.99 9.99 0 0 0 0 -1 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem_GP_2
+
 # Hermaphroditism
 #  Recruitment Distribution
 -4  4 0 0 -1  0 -1  0 0 0 0 0 0 0 # RecrDist_GP_1_area_1
+-4  4 0 0 -1  0 -1 0 0 0 0 0 0 0 # RecrDist_GP_2_area_2
 #  Cohort growth dev base
- 0.1 10 1 1 1 0 -1 0 0 0 0 0 0 0 # CohortGrowDev
+ 0.1 10 1 1 1 0 -1 201 0 0 0 0 0 0 # CohortGrowDev
 #  Movement
 #  Age Error from parameters
 #  catch multiplier
 #  fraction female, by GP
-0.000001  0.999999  0.5 0.5 0.5 0 -99 0 0 0 0 0 0 0 # FracFemale_GP_1
+  0.000001  0.999999  0.5 0.5 0.5 0 -99 0 0 0 0 0 0 0 # FracFemale_GP_1
+  0.000001  0.999999  0.5 0.5 0.5 0 -99 0 0 0 0 0 0 0 # FracFemale_GP_2
 #_no timevary MG parameters
-#
+ -10 10 1 0 0 -1 7 # ENV_parameter_cohort_dev
 #_seasonal_effects_on_biology_parms
  0 0 0 0 0 0 0 0 0 0 #_femwtlen1,femwtlen2,mat1,mat2,fec1,fec2,Malewtlen1,malewtlen2,L1,K
 #_ LO HI INIT PRIOR PR_SD PR_type PHASE
@@ -98,7 +115,7 @@
 0  # 0/1 to use steepness in initial equ recruitment calculation
 0  #  future feature:  0/1 to make realized sigmaR a function of SR curvature
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn #  parm_name
-12            16        12.984             0             0             0          1          0          0          0          0          0          0          0 # SR_LN(R0)
+5            25        18             0             0             0          1          0          0          0          0          0          0          0 # SR_LN(R0)
 -9.99          9.99             1             0             0             0         -1          0          0          0          0          0          0          0 # SR_BH_steep
 -9.99          9.99      0.656229             0             0             0          -3          0          0          0          0          0          0          0 # SR_sigmaR
 -10             5             0             0             0             0         -1          0          0          0          0          0          0          0 # SR_regime
@@ -107,17 +124,17 @@
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1 # first year of main recr_devs; early devs can preceed this era
 75 # last year of main recr_devs; forecast devs start in following year
--2 #_recdev phase
+2 #_recdev phase
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -4 #_recdev_early_phase
  0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
  1 #_lambda for Fcast_recr_like occurring before endyr+1
- 1 #_last_yr_nobias_adj_in_MPD; begin of ramp
- 1 #_first_yr_fullbias_adj_in_MPD; begin of plateau
- 74 #_last_yr_fullbias_adj_in_MPD
- 75 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
- 0 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
+ 11 #_last_yr_nobias_adj_in_MPD; begin of ramp
+ 25 #_first_yr_fullbias_adj_in_MPD; begin of plateau
+ 73.9 #_last_yr_fullbias_adj_in_MPD
+ 74.1 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
+ 0.96 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -10 #min rec_dev
 10 #max rec_dev
@@ -136,14 +153,16 @@
 #Fishing Mortality info
 0.3 # F ballpark
 -2001 # F ballpark year (neg value to disable)
-2 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
+3 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
 4 # max F or harvest rate, depends on F_Method
 # no additional F input needed for Fmethod 1
+5 # max iterations
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 # if Fmethod=3; read N iterations for tuning for Fmethod 3
- 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
+# 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
 #Fleet Yr Seas F_value se phase (for detailed setup of F_Method=2; -Yr to fill remaining years)
-1 1 1 0.004 0.01 -1 # 1 Fleet
+#1 1 1 0.004 0.01 -1 # 1 Fleet
+#1 1 1 0.004 0.01 -1 # 2 Fleet
 # F rates by fleet
 # Yr:  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101
 # seas:  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
@@ -159,12 +178,16 @@
 #_   fleet      link link_info  extra_se   biasadj     float  #  fleetname
 		1         1         0         0         0         0   #  Fleet1
 		2         1         0         0         0         0   #  Fleet2
+		3         1         0         0         0         0   #  Fleet3
+		4         1         0         0         0         0   #  Fleet4
 -9999 0 0 0 0 0
 #
 #_Q_parms(if_any);Qunits_are_ln(q)
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
-            -3             3      0             0             0             0          -9          0          0          0          0          0          0          0  #  LnQ_base_Fleet1
-            -5             5      0             0             0             0          -9          0          0          0          0          0          0          0  #  LnQ_base_Fleet2
+            -3             3      0             0             0             0          9          0          0          0          0          0          0          0  #  LnQ_base_Fleet1
+            -5             5      0             0             0             0          9          0          0          0          0          0          0          0  #  LnQ_base_Fleet2
+            -5             5      0             0             0             0          9          0          0          0          0          0          0          0  #  LnQ_base_Fleet3
+            -5             5      0             0             0             0          9          0          0          0          0          0          0          0  #  LnQ_base_Fleet4
 #_no timevary Q parameters
 #
 #_size_selex_patterns
@@ -187,6 +210,8 @@
 #_Pattern Discard Male Special
  0 0 0 0 # 1 Fleet
  0 0 0 0 # 2 Fleet
+ 0 0 0 0 # 3 Fleet
+ 0 0 0 0 # 4 Fleet
 #
 #_age_selex_patterns
 #Pattern:_0; parm=0; selex=1.0 for ages 0 to maxage
@@ -208,15 +233,21 @@
 #_Pattern Discard Male Special
  12 0 0 0 # 1 Fleet
  12 0 0 0 # 2 Fleet
+ 12 0 0 0 # 3 Fleet
+ 12 0 0 0 # 4 Fleet
 #
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
 # 1   Fishery AgeSelex
 0            10         4.346          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_inflection_Fleet(1)
 0            20       1.18008          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_95%width_Fleet(1)
+0            10         4.346          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_inflection_Fleet(2)
+0            20       1.18008          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_95%width_Fleet(2)
 
 # 2   Survey AgeSelex
-0            10       1.00593          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_inflection_Fleet(2)
-0            20      0.285029          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_95%width_Fleet(2)
+0            10       1.00593          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_inflection_Fleet(3)
+0            20      0.285029          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_95%width_Fleet(3)
+0            10       1.00593          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_inflection_Fleet(4)
+0            20      0.285029          -999          -999             0          4          0          0          0          0          0          0          0  #  Age_95%width_Fleet(4)
 
 #_no timevary selex parameters
 #

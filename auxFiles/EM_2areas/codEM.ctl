@@ -48,7 +48,7 @@
   #_no additional input for selected M option; read 1P per morph
 #
 1 # GrowthModel: 1=vonBert with L1&L2; 2=Richards with L1&L2; 3=age_specific_K_incr; 4=age_specific_K_decr; 5=age_specific_K_each; 6=NA; 7=NA; 8=growth cessation
-1.5 #_Age(post-settlement)_for_L1;linear growth below this
+1 #_Age(post-settlement)_for_L1;linear growth below this
 999 #_Growth_Age_for_L2 (999 to use as Linf)
 -999 #_exponential decay for growth above maxage (value should approx initial Z; -999 replicates 3.24; -998 to not allow growth above maxage)
 0  #_placeholder for future growth feature
@@ -64,8 +64,8 @@
 #
 #_growth_parms
 #_ LO HI INIT PRIOR PR_SD PR_type PHASE env_var&link dev_link dev_minyr dev_maxyr dev_PH Block Block_Fxn
- 0 1 0.34 0 0 0 6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
- 0 40 16.3767 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 0 1  0.34 0 0 0 6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 0 40 10.9 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  60 150 100 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0 1 0.195 0 0 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
 # 0 10 1.03921 0 0 0 3 0 0 0 0 0 0 0 # Richards_Fem_GP_1
@@ -79,7 +79,7 @@
  -9.99 9.99 0 0 0 0 -1 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem_GP_1
 
  0 1 0.34 0 0 0 6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_2
- 0 40 16.3767 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_2
+ 0 40 10.9 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_2
  60 150 100 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_2
  0 1 0.195 0 0 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_2
 # 0 10 1.03921 0 0 0 -3 0 0 0 0 0 0 0 # Richards_Fem_GP_2

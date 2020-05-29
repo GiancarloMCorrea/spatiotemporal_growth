@@ -1,10 +1,10 @@
 
 # ------------------------------------------------------------------------------
-# Run scenario_temporal: (OM 1 area and EM 1 area)
+# Run scenario_temporal: (OM 1 area and EM 1 area): OM has year effect and EM is constant
 
-om = "scenario_temporal/cod-om"
-em = "scenario_temporal/cod-em"
-scenarioName = paste0('D0-', growthTempIndex, '-F0-R2-cod')
+om = "scenario_Y_temporal/cod-om"
+em = "scenario_Y_temporal/cod-em"
+scenarioName = paste0('D3-', growthTempIndex, '-F0-R2-cod')
 
 if(!biasAdjust){
 
@@ -36,7 +36,8 @@ agecomp0 = list(fleets = c(2), Nsamp = list(saNsamEM), years = list(iniSurYear:n
 E0 = list(natM_type = NULL, natM_n_breakpoints = NULL, natM_lorenzen = NULL, 
           natM_val= NULL, par_name = c("NatM_p_1_Fem_GP_1"),
           par_int = c(0.34), par_phase = c(6), forecast_num = 0) # This is not altering anything
-G1 = list(VonBert_K_Fem_GP_1 = growthindex1$index, L_at_Amax_Fem_GP_1 = growthindex2$index) # check time varying parameters later
+# Standard (apply to OM):
+G1 = list(VonBert_K_Fem_GP_1 = growthindex1$index) # check time varying parameters later
 R2 = list(retro_yr = 0)
 
 # Detect number of cores:
@@ -67,11 +68,11 @@ if(!biasAdjust){
 
 
 # ------------------------------------------------------------------------------
-# Run scenario_temporal: (OM 1 area and EM 1 area)
+# Run scenario_temporal: (OM 1 area and EM 1 area): year effect for OM and EM is year effect too
 
-om = "scenario_2_temporal/cod-om"
-em = "scenario_2_temporal/cod-em"
-scenarioName = paste0('D1-', growthTempIndex, '-F0-R2-cod')
+om = "scenario_Y_2_temporal/cod-om"
+em = "scenario_Y_2_temporal/cod-em"
+scenarioName = paste0('D4-', growthTempIndex, '-F0-R2-cod')
 
 if(!biasAdjust){
 
@@ -103,7 +104,8 @@ agecomp0 = list(fleets = c(2), Nsamp = list(saNsamEM), years = list(iniSurYear:n
 E0 = list(natM_type = NULL, natM_n_breakpoints = NULL, natM_lorenzen = NULL, 
           natM_val= NULL, par_name = c("NatM_p_1_Fem_GP_1"),
           par_int = c(0.34), par_phase = c(6), forecast_num = 0) # This is not altering anything
-G1 = list(VonBert_K_Fem_GP_1 = growthindex1$index, L_at_Amax_Fem_GP_1 = growthindex2$index) # check time varying parameters later
+# Standard (apply to OM):
+G1 = list(VonBert_K_Fem_GP_1 = growthindex1$index) # check time varying parameters later
 R2 = list(retro_yr = 0)
 
 # Detect number of cores:

@@ -15,8 +15,10 @@ biasAdjust = TRUE
 
 source('runScenario_base.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
 source('runScenario_spatial.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
-source('runScenario_temporal.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
-source('runScenario_spatiotemporal.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
+source('runScenario_C_temporal.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
+source('runScenario_Y_temporal.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
+source('runScenario_C_spatiotemporal.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
+source('runScenario_Y_spatiotemporal.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
 
 # Extract values for bias adjustment
 scenNam = list.files()[grep(pattern = '-cod', x = list.files())]
@@ -60,8 +62,10 @@ biasAdjust = FALSE
 
 source('runScenario_base.R') 
 source('runScenario_spatial.R') 
-source('runScenario_temporal.R') 
-source('runScenario_spatiotemporal.R') 
+source('runScenario_C_temporal.R') 
+source('runScenario_Y_temporal.R') 
+source('runScenario_C_spatiotemporal.R') 
+source('runScenario_Y_spatiotemporal.R') 
 
 
 # -----------------------------------------------------------------------------
