@@ -42,7 +42,7 @@ R2 = list(retro_yr = 0)
 
 # Detect number of cores:
 cores = detectCores()
-cl = makeCluster(cores[1] - 3)
+cl = makeCluster(cores[1] - nCoresRemain)
 registerDoSNOW(cl)
 
 
@@ -114,7 +114,7 @@ ml = meansize[meansize$SubSeas == 2 & meansize$Yr > iniFyear & meansize$Yr <= ny
 
 # Detect number of cores:
 cores = detectCores()
-cl = makeCluster(cores[1] - 3)
+cl = makeCluster(cores[1] - nCoresRemain)
 registerDoSNOW(cl)
 
 
@@ -183,7 +183,7 @@ R2 = list(retro_yr = 0)
 
 # Detect number of cores:
 cores = detectCores()
-cl = makeCluster(cores[1] - 3)
+cl = makeCluster(cores[1] - nCoresRemain)
 registerDoSNOW(cl)
 
 

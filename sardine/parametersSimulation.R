@@ -3,21 +3,24 @@
 flNsamEM = 100
 saNsamEM = 100
 iniModelyear = 1
-nyears = 40
+nyears = 40 # 40
 iniFyear = 10 # F positive for iniFyear + 1. fishery and len comps start here. Normal value = 10
-maxFyear = 32 
-maxF = 0.11
-lowF = 0.09
-Fmsy = 0.1
-iniSurYear = 21 # ini year for survey index and age comps
-CVSur = 0.2
+maxFyear = 32 # 32
+Fmsy = 1.48261 #
+maxF = 1.1*Fmsy # 
+lowF = 0.9*Fmsy #
+iniSurYear = 16 # ini year for survey index and age comps
+CVSur = 0.35
 cPar = 2 # for len comps fishery
-base_K = 0.4
-base_Linf = 25
-base_natM = 0.5852
-CVgrowth = 0.05
-age_env_obs = 2
+base_K = 0.38
+base_Linf = 23.46
+base_natM = 0.4
+CVgrowth_K = 0.17
+CVgrowth_Linf = 0.055
+age_env_obs = 1
 nSampsML = 187
+CVgrowth_C = 0.135 # This should be for cohort specific type
+Fmult = 0.1
 
 # 1) Create F pattern
 upFway = normalize(x = iniFyear:maxFyear, method = 'range', range = c(0,maxF))
@@ -27,19 +30,27 @@ downFway = normalize(x = maxFyear:nyears, method = 'range', range = c(maxF,lowF)
 # Annual PDO index:
 PDO_annual = read.csv('aux_files/PDO_annual_1990_2019.csv') # REAL PDO: only this will apply in EM
 
-# Create index for year-specific temporal variability:
+
+# Create index for year-specific temporal variability: K
 growthindex1 = PDO_annual
-growthindex1$index = normalize(x = growthindex1$index, method = 'range', range = c(-CVgrowth, CVgrowth)) # apply to OM
+growthindex1$index = normalize(x = growthindex1$index, method = 'range', range = c(-CVgrowth_K, CVgrowth_K)) # apply to OM
 growthindex1$index[1:iniFyear] = 0
 write.csv(growthindex1, 'aux_files/K_year_devs.csv', row.names = FALSE)
 
 
-# Create index for year-specific temporal variability:
+# Create index for year-specific temporal variability: Linf
+growthindex3 = PDO_annual
+growthindex3$index = normalize(x = growthindex3$index, method = 'range', range = c(CVgrowth_Linf, -CVgrowth_Linf)) # apply to OM
+growthindex3$index[1:iniFyear] = 0
+write.csv(growthindex3, 'aux_files/Linf_year_devs.csv', row.names = FALSE)
+
+
+# Create index for cohort-specific temporal variability:
 growthindex2 = PDO_annual
-CVgrowth_C = ((base_K+CVgrowth)/base_K) - 1 # for cohort variability is different
+#CVgrowth_C = ((base_K+CVgrowth)/base_K) - 1 # for cohort variability is different
 growthindex2$index = normalize(x = growthindex2$index, method = 'range', range = c(-CVgrowth_C, CVgrowth_C)) # apply to OM
 growthindex2$index[1:iniFyear] = 0
-write.csv(growthindex2, 'aux_files/K_cohort_devs.csv', row.names = FALSE)
+write.csv(growthindex2, 'aux_files/Cohort_devs.csv', row.names = FALSE)
 
 
 # Create env index fake base:

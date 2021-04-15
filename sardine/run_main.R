@@ -4,25 +4,22 @@ library(doSNOW)
 require(BBmisc)
 
 rm(list = ls())
-setwd('C:/Users/moroncog/Documents/Manuscript_2_Codes_sard')
+setwd('C:/Users/moroncog/Documents/Codes/Growth_ss3sim_Correaetal2021_ICES/Manuscript_2_Codes_sard')
 source('parametersSimulation.R')
+nCoresRemain = 3
+firstSim = 151
 
 # -----------------------------------------------------------------------------
 # THE GROWTH INDEX PATTERN DOES NOT MATTER HERE. DO NOT RUN TWICE!!!!!!
 # First run these to get the bias_adjust parameters
-nSim = 25
+nSim = 5
 biasAdjust = TRUE
 
 source('runScenario_base.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
 source('runScenario_temporal_Y.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
 source('runScenario_temporal_C.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
-source('runScenario_temporal_cross.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
 source('runScenario_spatial.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
-source('runScenario_spatiotemporal_Y.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
-
-
-
-#source('runScenario_C_spatiotemporal.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
+source('runScenario_spatial_Equal.R') # probably we need to run this script internally because there are convergence problems for some iterations (errors)
 
 # Extract values for bias adjustment
 scenNam = list.files()[grep(pattern = '-sard', x = list.files())]
@@ -64,13 +61,11 @@ labelsBiasAdj = c('#_last_yr_nobias_adj_in_MPD; begin of ramp', '#_first_yr_full
 # Now run the final simulations
 # REMEMBER to delete previous folders.
 
-nSim = 50
+nSim = 400
 biasAdjust = FALSE
 
-source('runScenario_base.R')
+source('runScenario_base.R') 
 source('runScenario_temporal_Y.R') 
 source('runScenario_temporal_C.R') 
-source('runScenario_temporal_cross.R') 
 source('runScenario_spatial.R') 
-source('runScenario_spatiotemporal_Y.R') 
-
+source('runScenario_spatial_Equal.R') 

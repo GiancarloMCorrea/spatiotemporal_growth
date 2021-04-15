@@ -63,13 +63,12 @@
 #
 #_growth_parms
 #_ LO HI INIT PRIOR PR_SD PR_type PHASE env_var&link dev_link dev_minyr dev_maxyr dev_PH Block Block_Fxn
- 0 1.5 0.5852 0 0 0 -9 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
- 0 20 10 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 10 50 25 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
- 0 0.8 0.4 0 0 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
-														
- 0 5 2 0 0 0 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0 5 2.1 0 0 0 3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 0 2 0.4 0 0 0 -9 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 0 50 11.77 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 0 80 23.46 0 0 0 3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
+ 0 10 0.38 0 0 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1											
+ 0 10 1.41 0 0 0 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 0 10 1.17 0 0 0 3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -9.99 9.99 7.5242e-006 0 0 0 -1 0 0 0 0 0 0 0 # Wtlen_1_Fem_GP_1
  -9.99 9.99 3.2332 0 0 0 -1 0 0 0 0 0 0 0 # Wtlen_2_Fem_GP_1
  -9.99 9.99 15.44 0 0 0 -1 0 0 0 0 0 0 0 # Mat50%_Fem_GP_1
@@ -100,16 +99,16 @@
 0  # 0/1 to use steepness in initial equ recruitment calculation
 0  #  future feature:  0/1 to make realized sigmaR a function of SR curvature
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn #  parm_name
-3            25        14.73             0             0             0          1          0          0          0          0          0          0          0 # SR_LN(R0)
--9.99          9.99             0.3             0             0             0         -1          0          0          0          0          0          0          0 # SR_BH_steep
--9.99          9.99      1.2             0             0             0          -3          0          0          0          0          0          0          0 # SR_sigmaR
+3            25        15.39             0             0             0          1          0          0          0          0          0          0          0 # SR_LN(R0)
+-9.99          9.99             0.8             0             0             0         -1          0          0          0          0          0          0          0 # SR_BH_steep
+-9.99          9.99      0.75             0             0             0          -3          0          0          0          0          0          0          0 # SR_sigmaR
 -10             5             0             0             0             0         -1          0          0          0          0          0          0          0 # SR_regime
 -9.99          9.99             0             0             0             0         -1          0          0          0          0          0          0          0 # SR_autocorr
 #_no timevary SR parameters
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1 # first year of main recr_devs; early devs can preceed this era
 40 # last year of main recr_devs; forecast devs start in following year
-2 #_recdev phase
+1 #_recdev phase
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -4 #_recdev_early_phase
@@ -164,8 +163,8 @@
 #
 #_Q_parms(if_any);Qunits_are_ln(q)
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
-            -7             7      0             0             0             0          -9          0          0          0          0          0          0          0  #  LnQ_base_Fleet1
-            -7             7      0             0             0             0          -9          0          0          0          0          0          0          0  #  LnQ_base_Fleet2
+            -7             7      2             0             0             0          6          0          0          0          0          0          0          0  #  LnQ_base_Fleet1
+            -7             7      2             0             0             0          6          0          0          0          0          0          0          0  #  LnQ_base_Fleet2
 #_no timevary Q parameters
 #
 #_size_selex_patterns
@@ -212,12 +211,12 @@
 #
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
 # 1   Fishery AgeSelex
-2            30         15.5          -999          -999             0          4          0          0          0          0          0          0          0  #  Size_inflection_Fleet(1)
-0            10       3          -999          -999             0          4          0          0          0          0          0          0          0  #  Size_95%width_Fleet(1)
+0            100         18          -999          -999             0          4          0          0          0          0          0          0          0  #  Size_inflection_Fleet(1)
+0            50       3          -999          -999             0          4          0          0          0          0          0          0          0  #  Size_95%width_Fleet(1)
 
 # 2   Survey AgeSelex
-5            20       13          -999          -999             0          4          0          0          0          0          0          0          0  #  Size_inflection_Fleet(2)
-0            4      1.5          -999          -999             0          4          0          0          0          0          0          0          0  #  Size_95%width_Fleet(2)
+0            100       13          -999          -999             0          4          0          0          0          0          0          0          0  #  Size_inflection_Fleet(2)
+0            50      3          -999          -999             0          4          0          0          0          0          0          0          0  #  Size_95%width_Fleet(2)
 
 #_no timevary selex parameters
 #

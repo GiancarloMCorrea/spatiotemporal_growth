@@ -17,7 +17,7 @@
 2 #_Nsubseasons (even number, minimum is 2)
 1 #_spawn_month
 1 #_Ngenders: 1, 2, -1  (use -1 for 1 sex setup with SSB multiplied by female_frac parameter)
-10 #_Nages=accumulator age, first age is always age 0
+15 #_Nages=accumulator age, first age is always age 0
 1 #_Nareas
 2 #_Nfleets (including surveys)
 #_fleet_type: 1=catch fleet; 2=bycatch only fleet; 3=survey; 4=ignore
@@ -256,8 +256,8 @@
 9 #_N_age_bins
 0 1 2 3 4 5 6 7 8 
 1 #_N_ageerror_definitions
- -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
- 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001  
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
 #_mintailcomp: upper and lower distribution for females and males separately are accumulated until exceeding this level.
 #_addtocomp:  after accumulation of tails; this value added to all bins
 #_males and females treated as combined gender below this bin number

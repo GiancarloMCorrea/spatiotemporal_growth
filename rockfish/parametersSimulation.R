@@ -6,21 +6,21 @@ iniModelyear = 1
 nyears = 120
 iniFyear = 40 # F positive for iniFyear + 1. fishery and len comps start here. Normal value = 10
 maxFyear = 90 
-maxF = 0.055
-lowF = 0.045
-Fmsy = 0.05
+Fmsy = 0.081
+maxF = 1.1*Fmsy # 
+lowF = 0.9*Fmsy #
 iniSurYear = 81 # ini year for survey index and age comps
-CVSur = 0.2
+CVSur = 0.35
 cPar = 2 # for len comps fishery
 base_K = 0.16
 base_Linf = 29
 base_natM = 0.048
-CVgrowth = 0.02
-CVgrowthLinf = 2
-age_env_obs = 4
-age_env_obs_linf = 20
+CVgrowth_K = 0.15
+CVgrowth_Linf = 0.11
+age_env_obs = 2
 nSampsML = 187
-CVgrowth_C = 0.25 # This should be for cohort specific type
+CVgrowth_C = 0.45 # This should be for cohort specific type
+Fmult = 0.1
 
 # 1) Create F pattern
 upFway = normalize(x = iniFyear:maxFyear, method = 'range', range = c(0,maxF))
@@ -32,22 +32,24 @@ PDO_annual = read.csv('aux_files/PDO_annual_1940_2019.csv') # REAL PDO: only thi
 
 # Create index for year-specific temporal variability:
 growthindex1 = PDO_annual
-growthindex1$index = normalize(x = growthindex1$index, method = 'range', range = c(-CVgrowth, CVgrowth)) # apply to OM
+growthindex1$index = normalize(x = growthindex1$index, method = 'range', range = c(-CVgrowth_K, CVgrowth_K)) # apply to OM
 growthindex1$index[1:iniFyear] = 0
 write.csv(growthindex1, 'aux_files/K_year_devs.csv', row.names = FALSE)
 
-growthindex1Linf = PDO_annual
-growthindex1Linf$index = normalize(x = growthindex1Linf$index, method = 'range', range = c(-CVgrowthLinf, CVgrowthLinf)) # apply to OM
-growthindex1Linf$index[1:iniFyear] = 0
-write.csv(growthindex1Linf, 'aux_files/Linf_year_devs.csv', row.names = FALSE)
+
+# Create index for year-specific temporal variability: Linf
+growthindex3 = PDO_annual
+growthindex3$index = normalize(x = growthindex3$index, method = 'range', range = c(CVgrowth_Linf, -CVgrowth_Linf)) # apply to OM
+growthindex3$index[1:iniFyear] = 0
+write.csv(growthindex3, 'aux_files/Linf_year_devs.csv', row.names = FALSE)
 
 
-# Create index for year-specific temporal variability:
+# Create index for cohort-specific temporal variability:
 growthindex2 = PDO_annual
 #CVgrowth_C = ((base_K+CVgrowth)/base_K) - 1 # for cohort variability is different
 growthindex2$index = normalize(x = growthindex2$index, method = 'range', range = c(-CVgrowth_C, CVgrowth_C)) # apply to OM
 growthindex2$index[1:iniFyear] = 0
-write.csv(growthindex2, 'aux_files/K_cohort_devs.csv', row.names = FALSE)
+write.csv(growthindex2, 'aux_files/Cohort_devs.csv', row.names = FALSE)
 
 
 # Create env index fake base:

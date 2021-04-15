@@ -2,8 +2,8 @@
 # ------------------------------------------------------------------------------
 # Run scenario_temporal: (OM 1 area and EM 1 area). OM cohort effect and EM is constant
 
-om = "scenario_temporal_OM-C/sard-om"
-em = "scenario_temporal_OM-C/sard-em"
+om = "scenario_base/sard-om"
+em = "scenario_base/sard-em"
 scenarioName = 'D1-E1-F0-R1-sard'
 
 if(!biasAdjust){
@@ -42,7 +42,7 @@ R2 = list(retro_yr = 0)
 
 # Detect number of cores:
 cores = detectCores()
-cl = makeCluster(cores[1] - 3)
+cl = makeCluster(cores[1] - nCoresRemain)
 registerDoSNOW(cl)
 
 
@@ -114,7 +114,7 @@ ml = meansize[meansize$SubSeas == 2 & meansize$Yr > iniFyear & meansize$Yr <= ny
 
 # Detect number of cores:
 cores = detectCores()
-cl = makeCluster(cores[1] - 3)
+cl = makeCluster(cores[1] - nCoresRemain)
 registerDoSNOW(cl)
 
 
@@ -183,11 +183,11 @@ R2 = list(retro_yr = 0)
 
 # Detect number of cores:
 cores = detectCores()
-cl = makeCluster(cores[1] - 3)
+cl = makeCluster(cores[1] - nCoresRemain)
 registerDoSNOW(cl)
 
 
-foreach(ix = 1:nSim) %dopar% {
+foreach(ix = firstSim:nSim) %dopar% {
   
   library(ss3sim)
   ss3sim_base(iterations = ix, scenarios = scenarioName,

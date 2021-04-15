@@ -82,7 +82,7 @@
  -4 4 0 0 0 0 -4 0 0 0 0 0 0 0 # RecrDist_Area_1
  -4 4 0 0 0 0 -4 0 0 0 0 0 0 0 # RecrDist_timing_1
 #  Cohort growth dev base
- 0.1 10 1 1 1 0 -1 201 0 0 0 0 0 0 # CohortGrowDev
+ 0.1 10 1 1 1 0 -1 101 0 0 0 0 0 0 # CohortGrowDev
 #  Movement
 #  Age Error from parameters
 #  catch multiplier
